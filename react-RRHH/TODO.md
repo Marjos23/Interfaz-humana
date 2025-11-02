@@ -1,0 +1,2 @@
+- [ ] Enhance rustic styling across key views
+- [ ] Unify legacy page styles and remove inline overrides
