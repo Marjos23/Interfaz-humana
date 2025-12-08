@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles.css";
+import Principal from "./pages/principal";
 import Login from "./pages/Login";
 import Registro from "./pages/Registro";
 import Empleados from "./pages/Empleados";
@@ -19,7 +20,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Principal />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registro />} />
         <Route element={<MainWrapper />}>
           <Route path="/propuestas" element={<Propuestas />} />

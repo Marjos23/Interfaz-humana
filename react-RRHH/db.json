@@ -92,6 +92,21 @@
       "autorId": "57e7",
       "autorNombre": "254551 2151654",
       "autorEmail": "jvicenteontaneda110@gmail.com"
+    },
+    {
+      "id": "b92e",
+      "titulo": "Barrer las veredas",
+      "descripcion": "Barrer las veredas de la calle para que estén más limpias",
+      "categoria": "Medio Ambiente",
+      "votesYes": 0,
+      "votesNo": 0,
+      "comments": [],
+      "approved": false,
+      "votingOpen": false,
+      "createdAt": "8/12/2025, 4:21:51 p. m.",
+      "autorId": "5466",
+      "autorNombre": "Kiros Ramírez Moreira",
+      "autorEmail": "grodduttaxeffeu-5964@yopmail.com"
     }
   ],
   "problemas": [
@@ -203,6 +218,21 @@
       "password": "jose2005.",
       "rol": "ciudadano",
       "fechaRegistro": "30/10/2025"
+    },
+    {
+      "id": "5466",
+      "cedula": "1351646607",
+      "nombre": "Kiros Ramírez Moreira",
+      "email": "grodduttaxeffeu-5964@yopmail.com",
+      "telefono": "0923456789",
+      "direccion": "Malecón Escénico, Centro",
+      "codigoPostal": "130201",
+      "latitud": -0.9537,
+      "longitud": -80.7286,
+      "fechaNacimiento": "2004-12-16",
+      "password": "Pablo_123",
+      "rol": "ciudadano",
+      "fechaRegistro": "8/12/2025"
     }
   ],
   "votaciones": [],
