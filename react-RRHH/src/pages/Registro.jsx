@@ -2,7 +2,13 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { usuariosAPI } from "../services/api";
 import Swal from "sweetalert2";
-import { validarCedulaEcuatoriana, validarEmail, validarTelefono, formatearCedula, formatearTelefono } from "../utils/validations";
+import {
+  validarCedulaEcuatoriana,
+  validarEmail,
+  validarTelefono,
+  formatearCedula,
+  formatearTelefono,
+} from "../utils/validations";
 import MapSelector from "../components/MapSelector";
 import "../styles.css";
 
@@ -21,10 +27,11 @@ const Registro = () => {
   });
   const [loading, setLoading] = React.useState(false);
   const [errors, setErrors] = React.useState({});
+  const [aceptaTerminos, setAceptaTerminos] = React.useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     // Limpiar errores previos
     setErrors({});
     const newErrors = {};
@@ -54,15 +61,22 @@ const Registro = () => {
       newErrors.password = "Mínimo 6 caracteres";
     }
 
+    // Validar términos y condiciones
+    if (!aceptaTerminos) {
+      newErrors.terminos = "Debes aceptar los términos y condiciones";
+    }
+
     // Si hay errores, mostrarlos
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       Swal.fire({
         title: "Errores de Validación",
-        html: Object.values(newErrors).map(err => `• ${err}`).join('<br>'),
+        html: Object.values(newErrors)
+          .map((err) => `• ${err}`)
+          .join("<br>"),
         icon: "error",
         confirmButtonText: "Corregir",
-        confirmButtonColor: "#e53e3e"
+        confirmButtonColor: "#e53e3e",
       });
       return;
     }
@@ -81,7 +95,7 @@ const Registro = () => {
         fechaNacimiento: formData.fechaNacimiento || "",
         password: formData.password,
         rol: "ciudadano",
-        fechaRegistro: new Date().toLocaleDateString('es-EC'),
+        fechaRegistro: new Date().toLocaleDateString("es-EC"),
       };
 
       await usuariosAPI.create(nuevoCiudadano);
@@ -91,11 +105,10 @@ const Registro = () => {
         text: "Tu cuenta ha sido creada. Ya puedes iniciar sesión.",
         icon: "success",
         confirmButtonText: "Ir al Login",
-        confirmButtonColor: "#2c5282"
+        confirmButtonColor: "#2c5282",
       }).then(() => {
         navigate("/");
       });
-
     } catch (error) {
       console.error("Error en registro:", error);
       Swal.fire({
@@ -103,7 +116,7 @@ const Registro = () => {
         text: "No se pudo completar el registro. La cédula o email ya existe.",
         icon: "error",
         confirmButtonText: "Aceptar",
-        confirmButtonColor: "#e53e3e"
+        confirmButtonColor: "#e53e3e",
       });
     } finally {
       setLoading(false);
@@ -153,8 +166,13 @@ const Registro = () => {
           <div className="registro-benefits">
             <div className="benefit-item">
               <div className="benefit-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                 </svg>
               </div>
               <div className="benefit-text">
@@ -165,8 +183,13 @@ const Registro = () => {
 
             <div className="benefit-item">
               <div className="benefit-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                 </svg>
               </div>
               <div className="benefit-text">
@@ -177,8 +200,13 @@ const Registro = () => {
 
             <div className="benefit-item">
               <div className="benefit-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                 </svg>
               </div>
               <div className="benefit-text">
@@ -189,8 +217,13 @@ const Registro = () => {
 
             <div className="benefit-item">
               <div className="benefit-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                 </svg>
               </div>
               <div className="benefit-text">
@@ -232,7 +265,9 @@ const Registro = () => {
                 maxLength="10"
                 autoComplete="off"
               />
-              {errors.cedula && <span className="modern-error-message">{errors.cedula}</span>}
+              {errors.cedula && (
+                <span className="modern-error-message">{errors.cedula}</span>
+              )}
             </div>
 
             {/* Nombres y Apellidos en fila */}
@@ -283,7 +318,9 @@ const Registro = () => {
                 className={errors.email ? "input-error" : ""}
                 autoComplete="email"
               />
-              {errors.email && <span className="modern-error-message">{errors.email}</span>}
+              {errors.email && (
+                <span className="modern-error-message">{errors.email}</span>
+              )}
             </div>
 
             {/* Teléfono y Fecha */}
@@ -300,7 +337,11 @@ const Registro = () => {
                   className={errors.telefono ? "input-error" : ""}
                   maxLength="10"
                 />
-                {errors.telefono && <span className="modern-error-message">{errors.telefono}</span>}
+                {errors.telefono && (
+                  <span className="modern-error-message">
+                    {errors.telefono}
+                  </span>
+                )}
               </div>
               <div className="modern-form-group">
                 <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
@@ -310,7 +351,7 @@ const Registro = () => {
                   name="fechaNacimiento"
                   value={formData.fechaNacimiento}
                   onChange={handleChange}
-                  max={new Date().toISOString().split('T')[0]}
+                  max={new Date().toISOString().split("T")[0]}
                 />
               </div>
             </div>
@@ -320,7 +361,9 @@ const Registro = () => {
               <label htmlFor="ubicacion">📍 Ubicación en Manta</label>
               <MapSelector
                 value={formData.ubicacion}
-                onChange={(ubicacion) => setFormData({ ...formData, ubicacion })}
+                onChange={(ubicacion) =>
+                  setFormData({ ...formData, ubicacion })
+                }
                 disabled={loading}
               />
             </div>
@@ -342,7 +385,11 @@ const Registro = () => {
                   className={errors.password ? "input-error" : ""}
                   minLength="6"
                 />
-                {errors.password && <span className="modern-error-message">{errors.password}</span>}
+                {errors.password && (
+                  <span className="modern-error-message">
+                    {errors.password}
+                  </span>
+                )}
               </div>
               <div className="modern-form-group">
                 <label htmlFor="confirmPassword">
@@ -358,11 +405,56 @@ const Registro = () => {
                   onChange={handleChange}
                   className={errors.confirmPassword ? "input-error" : ""}
                 />
-                {errors.confirmPassword && <span className="modern-error-message">{errors.confirmPassword}</span>}
+                {errors.confirmPassword && (
+                  <span className="modern-error-message">
+                    {errors.confirmPassword}
+                  </span>
+                )}
               </div>
             </div>
 
-            <button type="submit" className="modern-btn-primary registro-submit" disabled={loading}>
+            {/* Términos y Condiciones */}
+            <div className="terminos-checkbox-container">
+              <label
+                className={`terminos-checkbox-label ${
+                  errors.terminos ? "terminos-error" : ""
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={aceptaTerminos}
+                  onChange={(e) => {
+                    setAceptaTerminos(e.target.checked);
+                    if (errors.terminos) {
+                      setErrors({ ...errors, terminos: null });
+                    }
+                  }}
+                  className="terminos-checkbox-input"
+                />
+                <span className="terminos-checkbox-custom"></span>
+                <span className="terminos-checkbox-text">
+                  He leído y acepto los{" "}
+                  <Link
+                    to="/terminos"
+                    target="_blank"
+                    className="terminos-link"
+                  >
+                    Términos y Condiciones de Uso
+                  </Link>
+                </span>
+              </label>
+              {errors.terminos && (
+                <span className="modern-error-message terminos-error-msg">
+                  {errors.terminos}
+                </span>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className="modern-btn-primary registro-submit"
+              disabled={loading}
+            >
               {loading ? (
                 <>
                   <span className="spinner"></span> Creando cuenta...

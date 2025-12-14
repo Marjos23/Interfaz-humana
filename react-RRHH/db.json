@@ -233,6 +233,21 @@
       "password": "Pablo_123",
       "rol": "ciudadano",
       "fechaRegistro": "8/12/2025"
+    },
+    {
+      "id": "cdd3",
+      "cedula": "1316944154",
+      "nombre": "David Cevallos",
+      "email": "davidceva0@gmail.com",
+      "telefono": "0963811743",
+      "direccion": "Av. 4 de Noviembre, Tarqui",
+      "codigoPostal": "130202",
+      "latitud": -0.9614,
+      "longitud": -80.7097,
+      "fechaNacimiento": "2004-08-06",
+      "password": "123456",
+      "rol": "ciudadano",
+      "fechaRegistro": "14/12/2025"
     }
   ],
   "votaciones": [],

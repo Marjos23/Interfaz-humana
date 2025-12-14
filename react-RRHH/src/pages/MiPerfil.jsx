@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faEnvelope, faPhone, faMapMarkerAlt, faCalendar, faSave } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faEnvelope,
+  faPhone,
+  faMapMarkerAlt,
+  faCalendar,
+  faSave,
+} from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
 import MapSelector from "../components/MapSelector";
 import "../styles.css";
@@ -30,12 +37,14 @@ const MiPerfil = () => {
         nombre: user.nombre || "",
         email: user.email || "",
         telefono: user.telefono || "",
-        ubicacion: user.direccion ? {
-          direccion: user.direccion || "",
-          codigoPostal: user.codigoPostal || "",
-          lat: user.latitud || -0.9536,
-          lng: user.longitud || -80.7286
-        } : null,
+        ubicacion: user.direccion
+          ? {
+              direccion: user.direccion || "",
+              codigoPostal: user.codigoPostal || "",
+              lat: user.latitud || -0.9536,
+              lng: user.longitud || -80.7286,
+            }
+          : null,
         fechaNacimiento: user.fechaNacimiento || "",
       });
       setPreviewFoto(user.fotoPerfil || null);
@@ -59,7 +68,7 @@ const MiPerfil = () => {
           title: "Archivo muy grande",
           text: "La imagen debe ser menor a 2MB",
           icon: "warning",
-          confirmButtonText: "Aceptar"
+          confirmButtonText: "Aceptar",
         });
         return;
       }
@@ -76,7 +85,7 @@ const MiPerfil = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      
+
       // Actualizar usuario en la API
       const updatedUser = {
         ...currentUser,
@@ -94,8 +103,8 @@ const MiPerfil = () => {
       // Como json-server usa IDs, actualizamos solo si tenemos el ID
       if (currentUser.id) {
         await fetch(`http://localhost:3001/usuarios/${currentUser.id}`, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(updatedUser),
         });
       }
@@ -109,16 +118,15 @@ const MiPerfil = () => {
         title: "¡Actualizado!",
         text: "Tu perfil ha sido actualizado correctamente",
         icon: "success",
-        confirmButtonText: "Aceptar"
+        confirmButtonText: "Aceptar",
       });
-
     } catch (error) {
       console.error("Error actualizando perfil:", error);
       Swal.fire({
         title: "Error",
         text: "No se pudo actualizar tu perfil. Intenta nuevamente.",
         icon: "error",
-        confirmButtonText: "Aceptar"
+        confirmButtonText: "Aceptar",
       });
     } finally {
       setLoading(false);
@@ -147,65 +155,23 @@ const MiPerfil = () => {
           {editing ? "Cancelar" : "Editar Perfil"}
         </button>
       </div>
-      <div className="perfil-content-wrapper" style={{ maxWidth: "800px", margin: "0 auto" }}>
+      <div className="perfil-content-wrapper">
         {/* Información del perfil */}
-        <div className="card" style={{ marginBottom: "2rem", textAlign: "center" }}>
-          <div style={{ position: "relative", display: "inline-block" }}>
+        <div className="perfil-card perfil-header-card">
+          <div className="perfil-avatar-container">
             {previewFoto ? (
               <img
                 src={previewFoto}
                 alt="Foto de perfil"
-                style={{
-                  width: "120px",
-                  height: "120px",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  border: "4px solid #667eea",
-                  margin: "0 auto 1rem",
-                }}
+                className="perfil-avatar"
               />
             ) : (
-              <div
-                style={{
-                  width: "120px",
-                  height: "120px",
-                  borderRadius: "50%",
-                  background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                  margin: "0 auto 1rem",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "white",
-                  fontSize: "3rem",
-                  fontWeight: "bold",
-                }}
-              >
+              <div className="perfil-avatar-placeholder">
                 {currentUser.nombre?.charAt(0).toUpperCase() || "U"}
               </div>
             )}
             {editing && (
-              <label
-                htmlFor="foto-upload"
-                style={{
-                  position: "absolute",
-                  bottom: "1rem",
-                  right: "-10px",
-                  background: "#667eea",
-                  width: "40px",
-                  height: "40px",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  color: "white",
-                  fontSize: "1.2rem",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseOver={(e) => e.currentTarget.style.background = "#5568d3"}
-                onMouseOut={(e) => e.currentTarget.style.background = "#667eea"}
-              >
+              <label htmlFor="foto-upload" className="perfil-upload-btn">
                 📷
                 <input
                   id="foto-upload"
@@ -217,16 +183,19 @@ const MiPerfil = () => {
               </label>
             )}
           </div>
-          <h2 style={{ marginBottom: "0.5rem" }}>{currentUser.nombre}</h2>
-          <h2 style={{ marginBottom: "0.5rem" }}>{currentUser.nombre}</h2>
-          <p style={{ color: "#666", marginBottom: "1rem" }}>{currentUser.email}</p>
-          <div style={{ display: "inline-block", padding: "0.5rem 1rem", background: currentUser.rol === "admin" ? "#3498db" : "#27ae60", color: "white", borderRadius: "20px", fontSize: "0.9rem" }}>
+          <h2 className="perfil-nombre">{currentUser.nombre}</h2>
+          <p className="perfil-email">{currentUser.email}</p>
+          <span
+            className={`perfil-rol-badge ${
+              currentUser.rol === "admin" ? "admin" : "ciudadano"
+            }`}
+          >
             {currentUser.rol === "admin" ? "👑 Administrador" : "👤 Ciudadano"}
-          </div>
+          </span>
         </div>
         {/* Formulario de datos */}
-        <div className="card">
-          <h3 style={{ marginBottom: "1.5rem" }}>Información Personal</h3>
+        <div className="perfil-card">
+          <h3 className="perfil-section-title">Información Personal</h3>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>
@@ -256,7 +225,7 @@ const MiPerfil = () => {
               />
             </div>
 
-            <div className="form-row">
+            <div className="perfil-form-row">
               <div className="form-group">
                 <label>
                   <FontAwesomeIcon icon={faPhone} /> Teléfono
@@ -291,14 +260,20 @@ const MiPerfil = () => {
               </label>
               <MapSelector
                 value={formData.ubicacion}
-                onChange={(ubicacion) => setFormData({ ...formData, ubicacion })}
+                onChange={(ubicacion) =>
+                  setFormData({ ...formData, ubicacion })
+                }
                 disabled={!editing}
               />
             </div>
 
             {editing && (
-              <div className="form-actions" style={{ marginTop: "1.5rem" }}>
-                <button type="submit" className="btn-primary" disabled={loading}>
+              <div className="form-actions">
+                <button
+                  type="submit"
+                  className="btn-primary"
+                  disabled={loading}
+                >
                   <FontAwesomeIcon icon={faSave} />{" "}
                   {loading ? "Guardando..." : "Guardar Cambios"}
                 </button>
@@ -308,32 +283,28 @@ const MiPerfil = () => {
         </div>
 
         {/* Información adicional */}
-        <div className="card" style={{ marginTop: "2rem" }}>
-          <h3 style={{ marginBottom: "1rem" }}>Información de la Cuenta</h3>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
-            <div>
+        <div className="perfil-card">
+          <h3 className="perfil-section-title">Información de la Cuenta</h3>
+          <div className="perfil-info-grid">
+            <div className="perfil-info-item">
               <strong>Rol:</strong>
-              <p style={{ color: "#666", marginTop: "0.25rem" }}>
-                {currentUser.rol === "admin" ? "Administrador Municipal" : "Ciudadano"}
+              <p>
+                {currentUser.rol === "admin"
+                  ? "Administrador Municipal"
+                  : "Ciudadano"}
               </p>
             </div>
-            <div>
+            <div className="perfil-info-item">
               <strong>Fecha de Registro:</strong>
-              <p style={{ color: "#666", marginTop: "0.25rem" }}>
-                {currentUser.fechaRegistro || "N/A"}
-              </p>
+              <p>{currentUser.fechaRegistro || "N/A"}</p>
             </div>
-            <div>
+            <div className="perfil-info-item">
               <strong>Cédula:</strong>
-              <p style={{ color: "#666", marginTop: "0.25rem" }}>
-                {currentUser.cedula || "No especificada"}
-              </p>
+              <p>{currentUser.cedula || "No especificada"}</p>
             </div>
-            <div>
+            <div className="perfil-info-item active">
               <strong>Estado:</strong>
-              <p style={{ color: "#27ae60", marginTop: "0.25rem" }}>
-                ✓ Activo
-              </p>
+              <p>✓ Activo</p>
             </div>
           </div>
         </div>

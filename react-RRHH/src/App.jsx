@@ -3,6 +3,8 @@ import "./styles.css";
 import Principal from "./pages/principal";
 import Login from "./pages/Login";
 import Registro from "./pages/Registro";
+import RecuperarPassword from "./pages/RecuperarPassword";
+import TerminosUso from "./pages/TerminosUso";
 import Empleados from "./pages/Empleados";
 import Asistencia from "./pages/Asistencia";
 import Permisos from "./pages/Permisos";
@@ -23,6 +25,8 @@ function App() {
         <Route path="/" element={<Principal />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registro />} />
+        <Route path="/recuperar-password" element={<RecuperarPassword />} />
+        <Route path="/terminos" element={<TerminosUso />} />
         <Route element={<MainWrapper />}>
           <Route path="/propuestas" element={<Propuestas />} />
           <Route path="/problemas" element={<Asistencia />} />
