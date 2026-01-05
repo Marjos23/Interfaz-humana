@@ -11,13 +11,17 @@
           "id": 1,
           "text": "Excelente idea, necesitamos más opciones de transporte sostenible",
           "date": "26/10/2025 14:30",
-          "author": "María López"
+          "author": "María López",
+          "reportado": false,
+          "aprobado": true
         },
         {
           "id": 2,
           "text": "¿Cuál sería el presupuesto estimado?",
           "date": "26/10/2025 15:45",
-          "author": "Carlos Mendez"
+          "author": "Carlos Mendez",
+          "reportado": false,
+          "aprobado": true
         }
       ],
       "approved": true,
@@ -264,6 +268,31 @@
       "ciudadanoNombre": "254551 2151654",
       "ciudadanoId": "57e7",
       "readAt": "2025-10-30T21:00:24.035Z"
+    },
+    {
+      "id": "1767579843661_b7e6",
+      "titulo": "corte de luz",
+      "mensaje": "chao luz",
+      "tipo": "corte",
+      "destinatario": "b7e6",
+      "meta": null,
+      "leido": false,
+      "createdAt": "2026-01-05T02:24:03.661Z",
+      "ciudadanoNombre": "jose vicente ontaneda",
+      "ciudadanoId": "b7e6"
+    },
+    {
+      "id": "1767579843661_cdd3",
+      "titulo": "corte de luz",
+      "mensaje": "chao luz",
+      "tipo": "corte",
+      "destinatario": "cdd3",
+      "meta": null,
+      "leido": true,
+      "createdAt": "2026-01-05T02:24:03.679Z",
+      "ciudadanoNombre": "David Cevallos",
+      "ciudadanoId": "cdd3",
+      "readAt": "2026-01-05T02:24:15.079Z"
     }
   ],
   "eventos": [
@@ -299,6 +328,80 @@
       "categoria": "Ambiental",
       "creadoPor": "admin@manta.gob.ec",
       "createdAt": "2025-10-25T09:00:00Z"
+    }
+  ],
+  "lideres": [
+    {
+      "id": "lider_1",
+      "nombre": "Carlos Mendoza",
+      "cargo": "Presidente Barrial",
+      "zona": "Centro",
+      "email": "carlos.mendoza@manta.gob.ec",
+      "telefono": "+593 9 98765432",
+      "direccion": "Calle 10 de Agosto, Centro",
+      "experiencia": "8 años de experiencia comunitaria",
+      "fotoPerfil": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%230066CC'/%3E%3Ctext x='50' y='60' font-size='40' font-weight='bold' fill='white' text-anchor='middle'%3ECM%3C/text%3E%3C/svg%3E",
+      "createdAt": "2025-10-01T10:00:00Z"
+    },
+    {
+      "id": "lider_2",
+      "nombre": "Maria Garcia López",
+      "cargo": "Lideresa Zonal",
+      "zona": "Tarqui",
+      "email": "maria.garcia@manta.gob.ec",
+      "telefono": "+593 9 98765433",
+      "direccion": "Av. 4 de Noviembre, Tarqui",
+      "experiencia": "6 años representando la zona",
+      "fotoPerfil": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23FF6B9D'/%3E%3Ctext x='50' y='60' font-size='40' font-weight='bold' fill='white' text-anchor='middle'%3EMG%3C/text%3E%3C/svg%3E",
+      "createdAt": "2025-10-02T10:00:00Z"
+    },
+    {
+      "id": "lider_3",
+      "nombre": "Luis Fernando Herrera",
+      "cargo": "Presidente Barrial",
+      "zona": "San Mateo",
+      "email": "luis.herrera@manta.gob.ec",
+      "telefono": "+593 9 98765434",
+      "direccion": "Calle Rocafuerte, San Mateo",
+      "experiencia": "10 años en gestión comunitaria",
+      "fotoPerfil": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23FFA500'/%3E%3Ctext x='50' y='60' font-size='40' font-weight='bold' fill='white' text-anchor='middle'%3ELH%3C/text%3E%3C/svg%3E",
+      "createdAt": "2025-10-03T10:00:00Z"
+    },
+    {
+      "id": "lider_4",
+      "nombre": "Patricia Sánchez",
+      "cargo": "Lideresa Zonal",
+      "zona": "Los Esteros",
+      "email": "patricia.sanchez@manta.gob.ec",
+      "telefono": "+593 9 98765435",
+      "direccion": "Avenida Las Flores, Los Esteros",
+      "experiencia": "5 años de liderazgo zonal",
+      "fotoPerfil": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%2300C896'/%3E%3Ctext x='50' y='60' font-size='40' font-weight='bold' fill='white' text-anchor='middle'%3EPS%3C/text%3E%3C/svg%3E",
+      "createdAt": "2025-10-04T10:00:00Z"
+    },
+    {
+      "id": "lider_5",
+      "nombre": "Roberto Castillo",
+      "cargo": "Presidente Barrial",
+      "zona": "Manta Vieja",
+      "email": "roberto.castillo@manta.gob.ec",
+      "telefono": "+593 9 98765436",
+      "direccion": "Calle Eloy Alfaro, Manta Vieja",
+      "experiencia": "7 años en administración comunitaria",
+      "fotoPerfil": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%239C27B0'/%3E%3Ctext x='50' y='60' font-size='40' font-weight='bold' fill='white' text-anchor='middle'%3ERC%3C/text%3E%3C/svg%3E",
+      "createdAt": "2025-10-05T10:00:00Z"
+    }
+  ],
+  "contactos": [
+    {
+      "id": "1",
+      "nombre": "Juan Pérez",
+      "email": "juan@example.com",
+      "asunto": "Consulta sobre el barrio",
+      "mensaje": "Quisiera hablar sobre mejoras en la zona",
+      "liderNombre": "Carlos Mendoza",
+      "createdAt": "2025-10-20T10:00:00Z",
+      "leido": false
     }
   ]
 }

@@ -9,12 +9,16 @@ import Empleados from "./pages/Empleados";
 import Asistencia from "./pages/Asistencia";
 import Permisos from "./pages/Permisos";
 import Propuestas from "./pages/Propuestas";
+import DetallePropuesta from "./pages/DetallePropuesta";
 import Votaciones from "./pages/Votaciones";
 import AdminDashboard from "./pages/AdminDashboard";
+import ModerarComentarios from "./pages/ModerarComentarios";
+import NotificacionesMasivas from "./pages/NotificacionesMasivas";
 import Estadisticas from "./pages/Estadisticas";
 import MiPerfil from "./pages/MiPerfil";
 import Eventos from "./pages/Eventos";
 import Encuesta from "./pages/Encuesta";
+import Lideres from "./pages/Lideres";
 import MainWrapper from "./pages/MainWrapper";
 import Dashboard from "./pages/Dashboard";
 
@@ -29,12 +33,19 @@ function App() {
         <Route path="/terminos" element={<TerminosUso />} />
         <Route element={<MainWrapper />}>
           <Route path="/propuestas" element={<Propuestas />} />
+          <Route path="/propuestas/:id" element={<DetallePropuesta />} />
           <Route path="/problemas" element={<Asistencia />} />
           <Route path="/votaciones" element={<Votaciones />} />
           <Route path="/eventos" element={<Eventos />} />
           <Route path="/encuesta" element={<Encuesta />} />
+          <Route path="/lideres" element={<Lideres />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/moderar-comentarios" element={<ModerarComentarios />} />
+          <Route
+            path="/notificaciones-masivas"
+            element={<NotificacionesMasivas />}
+          />
           <Route path="/estadisticas" element={<Estadisticas />} />
           <Route path="/mi-perfil" element={<MiPerfil />} />
           {/* Rutas legacy */}
