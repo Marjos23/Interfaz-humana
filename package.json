@@ -3,12 +3,12 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Portal de Participación Ciudadana de Manta - Espacio para que ciudadanos voten propuestas, reporten problemas y participen en decisiones locales",
+  "description": "Portal de Participaci\u00f3n Ciudadana de Manta - Espacio para que ciudadanos voten propuestas, reporten problemas y participen en decisiones locales",
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "node api.js && concurrently \"npm run server\" \"npm run client\"",
     "client": "vite",
     "server": "json-server --watch db.json --port 3001",
-    "build": "vite build",
+    "build": "node api.js && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
